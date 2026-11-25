@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070d12">
+<meta name="description" content="Arduiano Parham - آزمایشگاه مجازی الکترونیک، آردوینو، ماژول‌ها و پروژه‌ها">
+<title>Arduiano Parham | Virtual Electronics Lab</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+:root{--bg:#070d12;--panel:#101a22;--panel2:#14232c;--line:rgba(0,255,164,.18);--green:#00ffa3;--blue:#00c8ff;--text:#eaf7f4;--muted:#91a9aa;--red:#ff5470;--yellow:#ffd166}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Vazirmatn,sans-serif}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:#071017eF;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:21px;font-weight:900;direction:ltr;color:var(--green);letter-spacing:-1px}.brand b{color:var(--blue)}.navlinks{display:flex;gap:20px;align-items:center}.navlinks a{font-size:13px;color:var(--muted)}.navlinks a:hover{color:var(--green)}.navbtn{display:none;background:none;color:var(--green);border:1px solid var(--line);border-radius:9px;padding:8px 12px}
+.hero{padding:78px 0 55px;display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center;min-height:490px;background:radial-gradient(ellipse at 75% 35%,#00c8ff12,transparent 38%),radial-gradient(ellipse at 20% 20%,#00ffa310,transparent 40%)}
+.pill{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);border-radius:30px;padding:7px 13px;color:var(--green);font-size:12px}.led{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 12px var(--green)}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.35;margin:18px 0;font-weight:900}h1 span,.gradient{background:linear-gradient(90deg,var(--green),var(--blue));color:transparent;background-clip:text}.hero p{color:var(--muted);line-height:2.3;max-width:600px;font-size:14px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{border:1px solid var(--line);padding:11px 18px;border-radius:10px;font-size:13px;font-weight:700;background:transparent;color:var(--text)}.btn.primary{background:var(--green);color:#00170e;border-color:var(--green)}.btn:hover{transform:translateY(-2px);box-shadow:0 0 22px #00ffa322}.hero-art{min-height:300px;display:grid;place-items:center}.orbit{width:min(310px,75vw);aspect-ratio:1;border:1px solid #00ffa366;border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:0 0 55px #00ffa311,inset 0 0 50px #00c8ff0b}.orbit:before,.orbit:after{content:"";position:absolute;inset:17px;border:1px dashed #00c8ff88;border-radius:50%;animation:spin 28s linear infinite}.orbit:after{inset:40px;border-color:#00ffa355;animation-direction:reverse}.chip{z-index:1;width:125px;height:125px;display:grid;place-items:center;border:2px solid var(--green);background:#0c1920;color:var(--green);font-size:32px;font-weight:900;box-shadow:0 0 30px #00ffa344}@keyframes spin{to{transform:rotate(360deg)}}
+section{padding:65px 0}.section-title{margin-bottom:26px}.section-title small{color:var(--green);letter-spacing:1px;font-size:11px}.section-title h2{font-size:30px;margin:7px 0}.section-title p{color:var(--muted);font-size:13px;margin:0;line-height:2}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}.stat,.card,.panel{background:linear-gradient(145deg,var(--panel),#0b141b);border:1px solid var(--line);border-radius:14px}.stat{text-align:center;padding:16px}.stat strong{display:block;color:var(--green);font-size:24px}.stat span{color:var(--muted);font-size:11px}
+.lab-layout{display:grid;grid-template-columns:270px 1fr;gap:16px;align-items:start}.sidebar{padding:17px;position:sticky;top:88px}.sidebar h3{font-size:15px;margin:0 0 12px}.search{width:100%;background:#071017;border:1px solid var(--line);border-radius:9px;padding:10px;color:var(--text);outline:none;margin-bottom:12px}.categories{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}.cat{border:1px solid var(--line);background:transparent;color:var(--muted);padding:6px 9px;border-radius:20px;font-size:11px}.cat.active{background:#00ffa31a;color:var(--green);border-color:var(--green)}.part-list{display:grid;gap:8px;max-height:530px;overflow:auto}.part{display:flex;align-items:center;gap:10px;background:#0a141b;border:1px solid #ffffff10;border-radius:10px;padding:9px;text-align:right;color:var(--text);width:100%}.part:hover{border-color:var(--blue)}.part .emoji{font-size:23px;width:34px;text-align:center}.part small{display:block;color:var(--muted);font-size:10px}.workspace{padding:16px;min-width:0}.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.toolbar h3{font-size:16px;margin:0}.toolbar .tools{display:flex;gap:7px;flex-wrap:wrap}.mini{font-size:11px;padding:8px 11px;border-radius:8px;border:1px solid var(--line);color:var(--text);background:#0a151c}.mini.green{color:#00170e;background:var(--green);border-color:var(--green)}.board-wrap{overflow:auto;border-radius:12px;border:1px solid #ffffff12;background:#0a1319}.board{position:relative;width:760px;height:440px;margin:auto;background-color:#15232b;background-image:radial-gradient(#ffffff18 1px,transparent 1px);background-size:17px 17px;overflow:hidden}.breadboard{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:570px;height:245px;border-radius:13px;background:linear-gradient(145deg,#f0eee5,#c9c8bd);box-shadow:0 10px 24px #0008;border:5px solid #b5b4aa}.rail{position:absolute;left:15px;right:15px;height:13px;border-radius:5px;background:repeating-linear-gradient(90deg,transparent 0 9px,#b8b8ae 10px 11px);border-top:2px solid #e34c4c}.rail.bottom{bottom:12px;top:auto;border-top:0;border-bottom:2px solid #3187d9}.holes{position:absolute;left:25px;right:25px;top:45px;bottom:45px;background-image:radial-gradient(#777 1.5px,transparent 2px);background-size:13px 13px;opacity:.75}.center-gap{position:absolute;left:0;right:0;top:50%;height:23px;transform:translateY(-50%);background:#a9a99f;border-top:2px solid #bcbcb3;border-bottom:2px solid #eee}.pin-label{position:absolute;left:8px;color:#a32e2e;font:10px Arial;direction:ltr}.pin-label.top{top:5px}.pin-label.bottom{bottom:5px;color:#2367a7}
+.board-item{position:absolute;z-index:4;min-width:88px;padding:9px 10px;border:1px solid var(--green);border-radius:9px;background:#0a171eeF;color:var(--text);font-size:11px;text-align:center;box-shadow:0 0 15px #00ffa322;cursor:grab;user-select:none}.board-item .big{display:block;font-size:23px;margin-bottom:3px}.board-item.selected{outline:2px solid var(--blue);box-shadow:0 0 22px #00c8ff66}.wires{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}.wire{fill:none;stroke-width:4;stroke-linecap:round;filter:drop-shadow(0 0 3px currentColor)}.wire.red{stroke:#ff566b}.wire.black{stroke:#b8c2ca}.wire.green{stroke:#00ffa3}.wire.blue{stroke:#00c8ff}.wire.yellow{stroke:#ffd166}
+.board-hint{font-size:11px;color:var(--muted);line-height:2;margin:12px 2px}.below-lab{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:14px}.box{padding:14px;border:1px solid #ffffff12;background:#0a141b;border-radius:11px;min-width:0}.box h4{margin:0 0 10px;font-size:13px}.selected-info{font-size:12px;color:var(--muted);line-height:2}.selected-info b{color:var(--green)}.wire-controls{display:flex;flex-wrap:wrap;gap:7px}.wire-controls select{background:#071017;border:1px solid var(--line);border-radius:8px;padding:8px;color:var(--text);font-size:11px;max-width:100%}.wire-controls button{font-size:11px;padding:8px 11px;border-radius:8px;background:#00ffa31a;border:1px solid var(--green);color:var(--green)}
+.code{background:#050b10;border:1px solid #ffffff15;border-radius:10px;overflow:hidden}.code-head{padding:9px 12px;border-bottom:1px solid #ffffff12;display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.code pre{padding:14px;margin:0;overflow:auto;direction:ltr;text-align:left;color:#a6f7d5;font:12px/1.8 Consolas,monospace;white-space:pre}.project-grid,.module-grid,.tutorial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.project-card,.module-card,.tutorial-card{padding:18px;transition:.25s}.project-card:hover,.module-card:hover,.tutorial-card:hover{transform:translateY(-4px);border-color:var(--blue)}.project-card .ico,.module-card .ico{font-size:28px}.project-card h3,.module-card h3,.tutorial-card h3{font-size:14px;margin:10px 0 6px}.project-card p,.module-card p,.tutorial-card p{font-size:11px;color:var(--muted);line-height:2;margin:0}.project-card button{margin-top:13px}.module-grid{grid-template-columns:repeat(4,1fr)}.module-card{padding:14px}.module-card small{color:var(--green);font-size:10px}.tutorial-card{padding:17px}.contact{padding:35px;text-align:center;background:radial-gradient(ellipse,#00ffa311,transparent 70%);border:1px solid var(--line);border-radius:17px}.contact h2{font-size:26px}.contact p{color:var(--muted);font-size:13px;line-height:2}footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.toast{position:fixed;bottom:18px;left:18px;z-index:50;background:#10252b;border:1px solid var(--green);color:var(--green);padding:11px 15px;border-radius:10px;font-size:12px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}.modal{display:none;position:fixed;inset:0;z-index:60;background:#000b;place-items:center;padding:15px}.modal.show{display:grid}.modal-content{width:min(600px,100%);max-height:85vh;overflow:auto;background:#0d1921;border:1px solid var(--green);border-radius:15px;padding:20px}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head button{background:none;color:var(--green);border:0;font-size:22px}.modal-content p,.modal-content li{font-size:12px;line-height:2.2;color:var(--muted)}.modal-content h3{margin-top:5px}
+@media(max-width:850px){.navlinks{display:none;position:absolute;top:72px;right:0;left:0;background:#071017;padding:20px;flex-direction:column;align-items:flex-start;border-bottom:1px solid var(--line)}.navlinks.open{display:flex}.navbtn{display:block}.hero{grid-template-columns:1fr;text-align:center;padding-top:55px}.hero p{margin:auto}.actions{justify-content:center}.hero-art{grid-row:1;min-height:230px}.orbit{width:220px}.chip{width:95px;height:95px;font-size:25px}.lab-layout{grid-template-columns:1fr}.sidebar{position:static}.part-list{grid-template-columns:repeat(2,1fr);max-height:300px}.project-grid,.tutorial-grid{grid-template-columns:repeat(2,1fr)}.module-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){section{padding:48px 0}.section-title h2{font-size:25px}.below-lab{grid-template-columns:1fr}.project-grid,.tutorial-grid{grid-template-columns:1fr}.module-grid{grid-template-columns:repeat(2,1fr)}.stats{gap:7px}.stat{padding:12px 5px}.stat strong{font-size:19px}.workspace{padding:10px}.toolbar h3{font-size:14px}}
+</style>
+</head>
+<body>
+<header><nav class="wrap">
+<a class="brand" href="#home">ARDUIANO<b>.</b></a>
+<button class="navbtn" id="navBtn">☰</button>
+<div class="navlinks" id="navLinks">
+<a href="#home">خانه</a><a href="#lab">آزمایشگاه</a><a href="#projects">پروژه‌ها</a><a href="#modules">ماژول‌ها</a><a href="#learn">آموزش</a><a href="#contact">ارتباط</a>
+</div>
+</nav></header>
+<main class="wrap">
+<section class="hero" id="home">
+<div>
+<div class="pill"><i class="led"></i> VIRTUAL ELECTRONICS LAB</div>
+<h1>ایده‌هات رو<br><span>مدار کن!</span></h1>
+<p>به آزمایشگاه دیجیتال Arduiano Parham خوش اومدی؛ قطعات رو انتخاب کن، روی بردبورد بچین، سیم‌کشی رو تمرین کن، کد آردوینو رو ببین و پروژه‌های واقعی بساز.</p>
+<div class="actions"><a class="btn primary" href="#lab">ورود به آزمایشگاه ⚡</a><a class="btn" href="#projects">دیدن پروژه‌ها</a></div>
+<div class="stats"><div class="stat"><strong>30+</strong><span>ماژول و قطعه</span></div><div class="stat"><strong>12+</strong><span>ایده پروژه</span></div><div class="stat"><strong>∞</strong><span>ایده برای ساخت</span></div></div>
+</div>
+<div class="hero-art"><div class="orbit"><div class="chip">AP</div></div></div>
+</section>
+
+<section id="lab">
+<div class="section-title"><small>01 / VIRTUAL LAB</small><h2>آزمایشگاه <span class="gradient">مدار و بردبورد</span></h2><p>قطعه را از ستون کناری اضافه کن. قطعات را با ماوس جابه‌جا کن و برای ساخت سیم، دو قطعه را انتخاب کن.</p></div>
+<div class="lab-layout">
+<aside class="sidebar card">
+<h3>🧰 جعبه قطعات</h3>
+<input class="search" id="partSearch" placeholder="جستجوی قطعه یا ماژول...">
+<div class="categories" id="categories"></div>
+<div class="part-list" id="partList"></div>
+</aside>
+<div class="workspace card">
+<div class="toolbar"><h3>🟩 میز کار الکترونیک</h3><div class="tools"><button class="mini" id="clearBtn">پاک‌کردن میز</button><button class="mini" id="resetBtn">چیدمان نمونه</button><button class="mini green" id="saveBtn">ذخیره چیدمان</button></div></div>
+<div class="board-wrap"><div class="board" id="board">
+<div class="breadboard"><div class="rail"></div><div class="holes"></div><div class="center-gap"></div><div class="rail bottom"></div><span class="pin-label top">+  -  +  -</span><span class="pin-label bottom">+  -  +  -</span></div>
+<svg class="wires" id="wires" viewBox="0 0 760 440" preserveAspectRatio="none"></svg>
+</div></div>
+<p class="board-hint">راهنما: روی یک قطعه کلیک کن، سپس قطعه دوم را انتخاب کن تا سیم بین آن‌ها ساخته شود. این محیط یک شبیه‌ساز آموزشیِ نمایشی است؛ برای سیم‌کشی واقعی، پایه‌ها و دیتاشیت قطعات را بررسی کن.</p>
+<div class="below-lab">
+<div class="box"><h4>🔧 اتصال سیم</h4><div class="wire-controls"><select id="wireColor"><option value="red">قرمز (+V)</option><option value="black">مشکی (GND)</option><option value="green">سبز (Signal)</option><option value="blue">آبی (Data)</option><option value="yellow">زرد (Control)</option></select><button id="wireBtn">حالت سیم‌کشی</button><button id="deleteWireBtn">حذف آخرین سیم</button></div><p class="board-hint" id="wireStatus">برای سیم‌کشی، دو قطعه را به‌ترتیب انتخاب کن.</p></div>
+<div class="box"><h4>📋 اطلاعات قطعه انتخاب‌شده</h4><div class="selected-info" id="selectedInfo">هنوز قطعه‌ای انتخاب نشده است.</div></div>
+</div>
+<div class="box" style="margin-top:13px"><h4>💻 کد نمونه Arduino</h4><div class="code"><div class="code-head"><span id="codeTitle">LED Blink</span><button class="mini" id="copyCode">کپی کد</button></div><pre id="codeOutput"></pre></div></div>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="section-title"><small>02 / BUILD PROJECTS</small><h2>پروژه‌ساز <span class="gradient">هوشمند</span></h2><p>یک پروژه انتخاب کن تا قطعات پیشنهادی، توضیح اتصال و کد شروع در آزمایشگاه بارگذاری شود.</p></div>
+<div class="project-grid" id="projectGrid"></div>
+</section>
+
+<section id="modules">
+<div class="section-title"><small>03 / COMPONENT DATABASE</small><h2>کتابخانه <span class="gradient">ماژول‌ها</span></h2><p>از بردبورد و سنسور تا آمپلی‌فایر، بلندگو، درایور موتور و ماژول‌های ارتباطی.</p></div>
+<div class="module-grid" id="moduleGrid"></div>
+</section>
+
+<section id="learn">
+<div class="section-title"><small>04 / LEARNING CENTER</small><h2>یادگیری <span class="gradient">مهندسی</span></h2><p>چند اصل مهم که قبل از بستن مدار باید بلد باشی.</p></div>
+<div class="tutorial-grid">
+<article class="card tutorial-card"><div class="ico">🔴</div><h3>تغذیه و قطبیت</h3><p>ولتاژ مجاز هر ماژول را از مشخصاتش بخوان. مثبت و زمین را اشتباه وصل نکن و زمین مشترک را فقط در مدارهایی که لازم است برقرار کن.</p></article>
+<article class="card tutorial-card"><div class="ico">🧩</div><h3>بردبورد</h3><p>سوراخ‌های هر ردیف در بخش میانی معمولاً گروهی به هم متصل‌اند؛ شیار وسط دو نیمه را از هم جدا می‌کند. ریل‌های کناری ممکن است در بعضی بردها قطع باشند.</p></article>
+<article class="card tutorial-card"><div class="ico">🔊</div><h3>آمپلی‌فایر و بلندگو</h3><p>امپدانس بلندگو، ولتاژ تغذیه و توان مجاز آمپلی‌فایر باید با هم سازگار باشند. خروجی بلندگو را به پایه‌های آردوینو وصل نکن.</p></article>
+<article class="card tutorial-card"><div class="ico">📡</div><h3>سنسورها</h3><p>پایه‌های VCC، GND و خروجی را شناسایی کن. خروجی بعضی ماژول‌ها ۳٫۳ ولت است و ممکن است به مبدل سطح منطقی نیاز داشته باشد.</p></article>
+<article class="card tutorial-card"><div class="ico">🧠</div><h3>کدنویسی</h3><p>ابتدا ورودی و خروجی‌ها را جداگانه آزمایش کن، بعد ماژول‌ها را ترکیب کن. نام پایه‌ها را در کد با سیم‌کشی واقعی هماهنگ نگه دار.</p></article>
+<article class="card tutorial-card"><div class="ico">🛠️</div><h3>عیب‌یابی</h3><p>اتصال زمین، قطبیت، ولتاژ، شماره پایه‌ها و اتصالات شل را مرحله‌به‌مرحله بررسی کن. هر بار فقط یک تغییر بده.</p></article>
+</div>
+</section>
+
+<section id="contact">
+<div class="contact"><small class="gradient">LET'S BUILD SOMETHING</small><h2>آماده‌ای یه چیز خفن بسازیم؟</h2><p>برای ارتباط، پیشنهاد پروژه یا همکاری پیام بده.</p><a class="btn primary" href="mailto:Parham.pary.of@gmail.com">Parham.pary.of@gmail.com ✉</a></div>
+</section>
+</main>
+<footer class="wrap"><span>© 2026 Arduiano Parham</span><span>Designed for curious minds ⚡</span></footer>
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal"><div class="modal-content"><div class="modal-head"><h3 id="modalTitle">جزئیات قطعه</h3><button id="modalClose">×</button></div><div id="modalBody"></div></div></div>
+<script>
+const parts=[
+{id:'uno',name:'Arduino UNO',emoji:'🟦',cat:'بردها',desc:'برد اصلی برای کنترل سنسورها و ماژول‌ها. پایه‌های دیجیتال، آنالوگ، تغذیه و GND دارد.',pins:'5V, 3.3V, GND, D0-D13, A0-A5',tip:'قبل از اتصال، ولتاژ کاری هر ماژول و محدودیت جریان پایه‌ها را بررسی کن.'},
+{id:'nano',name:'Arduino Nano',emoji:'🔹',cat:'بردها',desc:'برد کوچک آردوینو برای پروژه‌های جمع‌وجور.',pins:'5V, GND, D2-D13, A0-A7',tip:'چیدمان پایه‌ها را با نسخه دقیق برد خودت تطبیق بده.'},
+{id:'bread',name:'بردبورد',emoji:'▦',cat:'بردها',desc:'برای ساخت نمونه مدار بدون لحیم‌کاری.',pins:'ردیف‌های متصل و ریل‌های تغذیه',tip:'پیوستگی ریل‌های کناری را با مولتی‌متر بررسی کن.'},
+{id:'led',name:'LED',emoji:'💡',cat:'قطعات پایه',desc:'دیود نورانی برای نمایش وضعیت مدار.',pins:'آند (+), کاتد (-)',tip:'برای LED معمولی از مقاومت محدودکننده جریان مناسب استفاده کن.'},
+{id:'res',name:'مقاومت',emoji:'〰️',cat:'قطعات پایه',desc:'برای محدودکردن جریان و تقسیم ولتاژ.',pins:'دو پایه بدون قطبیت',tip:'مقدار مقاومت را با توجه به مدار محاسبه کن.'},
+{id:'pot',name:'پتانسیومتر 10K',emoji:'🎚️',cat:'قطعات پایه',desc:'مقاومت متغیر برای تنظیم سطح سیگنال یا ورودی آنالوگ.',pins:'دو سر مقاومتی + پایه وسط',tip:'برای ورودی آنالوگ، پایه وسط معمولاً خروجی متغیر است.'},
+{id:'button',name:'شستی',emoji:'🔘',cat:'قطعات پایه',desc:'کلید فشاری برای ورودی دیجیتال.',pins:'دو جفت پایه کلید',tip:'از INPUT_PULLUP یا مقاومت Pull-down استفاده کن.'},
+{id:'buzzer',name:'Buzzer',emoji:'🔔',cat:'قطعات پایه',desc:'تولید هشدار صوتی در مدار.',pins:'VCC / GND یا + / -',tip:'نوع Active و Passive روش راه‌اندازی متفاوتی دارند.'},
+{id:'hc',name:'HC-SR04',emoji:'📡',cat:'سنسورها',desc:'سنسور فاصله‌سنج اولتراسونیک.',pins:'VCC, TRIG, ECHO, GND',tip:'سطح ولتاژ پایه Echo را با برد کنترلر سازگار کن.'},
+{id:'dht',name:'DHT11',emoji:'🌡️',cat:'سنسورها',desc:'اندازه‌گیری دما و رطوبت محیط.',pins:'VCC, DATA, GND',tip:'بعضی نسخه‌ها مقاومت Pull-up داخلی دارند.'},
+{id:'pir',name:'PIR HC-SR501',emoji:'🚶',cat:'سنسورها',desc:'تشخیص حرکت با مادون قرمز غیرفعال.',pins:'VCC, OUT, GND',tip:'پس از روشن‌شدن، برای پایدارشدن سنسور کمی زمان بده.'},
+{id:'mq',name:'MQ-2',emoji:'💨',cat:'سنسورها',desc:'سنسور گاز و دود با خروجی آنالوگ/دیجیتال.',pins:'VCC, GND, AO, DO',tip:'برای اندازه‌گیری دقیق به کالیبراسیون و شرایط مناسب نیاز دارد.'},
+{id:'flame',name:'Flame Sensor',emoji:'🔥',cat:'سنسورها',desc:'ماژول تشخیص نور مادون قرمز شعله.',pins:'VCC, GND, DO (و گاهی AO)',tip:'برای ایمنی واقعی به‌تنهایی به این ماژول تکیه نکن.'},
+{id:'tcrt',name:'TCRT5000',emoji:'⚫',cat:'سنسورها',desc:'حسگر بازتاب مادون قرمز برای تشخیص سطح یا خط.',pins:'VCC, GND, DO / AO',tip:'آستانه تشخیص با پیچ تنظیم ماژول قابل تغییر است.'},
+{id:'lcd',name:'LCD 16x2 I2C',emoji:'🖥️',cat:'نمایشگرها',desc:'نمایش متن با رابط I2C.',pins:'VCC, GND, SDA, SCL',tip:'آدرس I2C را با اسکنر پیدا کن؛ 0x27 و 0x3F رایج‌اند.'},
+{id:'seg',name:'سون‌سگمنت',emoji:'🔢',cat:'نمایشگرها',desc:'نمایش عدد با LEDهای سگمنتی.',pins:'پایه‌های سگمنت و مشترک',tip:'نوع آند مشترک یا کاتد مشترک را مشخص کن و مقاومت مناسب بگذار.'},
+{id:'rc',name:'RFID RC522',emoji:'💳',cat:'ارتباطی',desc:'خواندن کارت و تگ RFID با رابط SPI.',pins:'3.3V, GND, SDA, SCK, MOSI, MISO, RST',tip:'این ماژول را با تغذیه 3.3V راه‌اندازی کن؛ پایه‌ها را به 5V وصل نکن.'},
+{id:'bt',name:'Bluetooth HC-05',emoji:'📶',cat:'ارتباطی',desc:'ارتباط سریال بی‌سیم بلوتوث.',pins:'VCC, GND, TXD, RXD',tip:'سطح منطقی RX ماژول را بررسی کن و در صورت نیاز تقسیم ولتاژ بگذار.'},
+{id:'servo',name:'Servo SG90',emoji:'⚙️',cat:'موتورها',desc:'سروو موتور کوچک برای کنترل زاویه.',pins:'Signal, VCC, GND',tip:'برای چند سروو یا بار مکانیکی، تغذیه جداگانه مناسب لازم است.'},
+{id:'l298',name:'L298N',emoji:'🛞',cat:'موتورها',desc:'درایور دو کاناله موتور DC.',pins:'ENA, IN1-IN4, ENB, OUT1-OUT4, GND, تغذیه',tip:'گرما و افت ولتاژ درایور را در طراحی در نظر بگیر.'},
+{id:'relay',name:'ماژول رله',emoji:'🔀',cat:'موتورها',desc:'کلید الکترونیکی برای بارهای سازگار با مشخصات رله.',pins:'VCC, GND, IN, COM, NO, NC',tip:'این محیط فقط مدار کم‌ولتاژ آموزشی را نمایش می‌دهد؛ برق شهر خطرناک است.'},
+{id:'amp',name:'آمپلی‌فایر XY-P15W',emoji:'🔊',cat:'صوت',desc:'ماژول آمپلی‌فایر صوتی برای راه‌اندازی بلندگو با منبع تغذیه سازگار.',pins:'VCC, GND, L-IN, R-IN, L+/L-, R+/R-',tip:'تغذیه، امپدانس بلندگو و توان خروجی باید با دیتاشیت ماژول تطبیق داشته باشد. خروجی بلندگو به آردوینو وصل نمی‌شود.'},
+{id:'pam',name:'PAM8403',emoji:'🎵',cat:'صوت',desc:'آمپلی‌فایر استریو کوچک کلاس D.',pins:'VCC, GND, L-IN, R-IN, L+/L-, R+/R-',tip:'از منبع تغذیه مناسب و بلندگوی سازگار استفاده کن؛ خروجی‌ها معمولاً پل‌دارند.'},
+{id:'speaker',name:'بلندگو 4Ω / 8Ω',emoji:'🔈',cat:'صوت',desc:'تبدیل سیگنال الکتریکی به صدا.',pins:'SPK+ و SPK-',tip:'امپدانس و توان نامی بلندگو باید با آمپلی‌فایر سازگار باشد.'},
+{id:'psu',name:'ماژول تغذیه',emoji:'🔋',cat:'تغذیه',desc:'تأمین ولتاژ DC تنظیم‌شده برای مدارهای کم‌ولتاژ.',pins:'IN+, IN-, OUT+, OUT-',tip:'قطبیت و محدوده ورودی/خروجی را پیش از اتصال بررسی کن.'},
+{id:'tp',name:'TP4056',emoji:'🔌',cat:'تغذیه',desc:'ماژول شارژ سلول لیتیومی تک‌سل.',pins:'IN+, IN-, B+, B-, OUT+, OUT-',tip:'فقط برای باتری سازگار و با رعایت مشخصات حفاظتی استفاده شود.'}
+];
+const projects=[
+{id:'blink',name:'چشمک‌زن LED',emoji:'💡',desc:'اولین پروژه برای یادگیری خروجی دیجیتال.',parts:['uno','bread','led','res'],code:'// LED Blink\\n#define LED_PIN 13\\n\\nvoid setup() {\\n  pinMode(LED_PIN, OUTPUT);\\n}\\n\\nvoid loop() {\\n  digitalWrite(LED_PIN, HIGH);\\n  delay(1000);\\n  digitalWrite(LED_PIN, LOW);\\n  delay(1000);\\n}'},
+{id:'radar',name:'رادار آردوینو',emoji:'📡',desc:'اندازه‌گیری فاصله با HC-SR04 و نمایش روی سریال.',parts:['uno','bread','hc','servo'],code:'// HC-SR04 distance test\\n#define TRIG 7\\n#define ECHO 8\\n\\nvoid setup() {\\n  Serial.begin(9600);\\n  pinMode(TRIG, OUTPUT);\\n  pinMode(ECHO, INPUT);\\n}\\n\\nvoid loop() {\\n  digitalWrite(TRIG, LOW);\\n  delayMicroseconds(2);\\n  digitalWrite(TRIG, HIGH);\\n  delayMicroseconds(10);\\n  digitalWrite(TRIG, LOW);\\n  long t = pulseIn(ECHO, HIGH, 30000);\\n  float cm = t * 0.0343 / 2;\\n  Serial.println(cm);\\n  delay(200);\\n}'},
+{id:'weather',name:'ایستگاه دما و رطوبت',emoji:'🌡️',desc:'خواندن دما و رطوبت از DHT11.',parts:['uno','bread','dht','lcd'],code:'#include <DHT.h>\\n#define DHTPIN 2\\n#define DHTTYPE DHT11\\nDHT dht(DHTPIN, DHTTYPE);\\n\\nvoid setup() {\\n  Serial.begin(9600);\\n  dht.begin();\\n}\\n\\nvoid loop() {\\n  float h = dht.readHumidity();\\n  float t = dht.readTemperature();\\n  if (isnan(h) || isnan(t)) {\\n    Serial.println(\"Sensor error\");\\n  } else {\\n    Serial.print(\"Temp: \"); Serial.print(t);\\n    Serial.print(\" C  Humidity: \"); Serial.println(h);\\n  }\\n  delay(2000);\\n}'},
+{id:'door',name:'قفل هوشمند RFID',emoji:'🚪',desc:'پروژه کنترل دسترسی با RC522 و سروو؛ اتصال دقیق را با نسخه کتابخانه تطبیق بده.',parts:['uno','bread','rc','servo','buzzer'],code:'#include <SPI.h>\\n#include <MFRC522.h>\\n#define SS_PIN 10\\n#define RST_PIN 9\\nMFRC522 rfid(SS_PIN, RST_PIN);\\n\\nvoid setup() {\\n  Serial.begin(9600);\\n  SPI.begin();\\n  rfid.PCD_Init();\\n  Serial.println(\"RFID Ready\");\\n}\\n\\nvoid loop() {\\n  if (!rfid.PICC_IsNewCardPresent()) return;\\n  if (!rfid.PICC_ReadCardSerial()) return;\\n  Serial.print(\"UID: \");\\n  for (byte i=0; i<rfid.uid.size; i++) {\\n    Serial.print(rfid.uid.uidByte[i], HEX);\\n    Serial.print(\" \");\\n  }\\n  Serial.println();\\n  rfid.PICC_HaltA();\\n}'},
+{id:'amp',name:'آمپلی‌فایر رومیزی',emoji:'🔊',desc:'تمرین شناخت ورودی صدا، تغذیه و خروجی بلندگو؛ اتصال صوتی نمونه‌سازی‌شده.',parts:['bread','amp','speaker','psu'],code:'// Audio amplifier module: no Arduino sketch required.\\n// Connect an audio source to L-IN / R-IN and GND.\\n// Use the amplifier supply specified by its datasheet.\\n// Connect compatible speakers only to speaker outputs.\\n// Never connect speaker outputs to Arduino pins.'},
+{id:'motor',name:'کنترل موتور DC',emoji:'🛞',desc:'کنترل جهت موتور با درایور L298N.',parts:['uno','bread','l298'],code:'#define IN1 7\\n#define IN2 8\\n#define ENA 5\\n\\nvoid setup() {\\n  pinMode(IN1, OUTPUT);\\n  pinMode(IN2, OUTPUT);\\n  pinMode(ENA, OUTPUT);\\n}\\n\\nvoid loop() {\\n  digitalWrite(IN1, HIGH);\\n  digitalWrite(IN2, LOW);\\n  analogWrite(ENA, 180);\\n  delay(2000);\\n  analogWrite(ENA, 0);\\n  delay(1000);\\n}'}
+];
+let activeCat='همه', selected=null, wireMode=false, wireStart=null, placed=[], wires=[];
+const $=id=>document.getElementById(id);
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+const cats=['همه',...new Set(parts.map(p=>p.cat))];
+function renderCats(){$('categories').innerHTML=cats.map(c=>`<button class="cat ${c===activeCat?'active':''}" data-cat="${c}">${c}</button>`).join('');document.querySelectorAll('.cat').forEach(b=>b.onclick=()=>{activeCat=b.dataset.cat;renderCats();renderParts()})}
+function renderParts(){let q=$('partSearch').value.trim().toLowerCase();let list=parts.filter(p=>(activeCat==='همه'||p.cat===activeCat)&&(p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)));$('partList').innerHTML=list.map(p=>`<button class="part" data-id="${p.id}"><span class="emoji">${p.emoji}</span><span>${p.name}<small>${p.cat}</small></span></button>`).join('');document.querySelectorAll('.part').forEach(b=>b.onclick=()=>addPart(b.dataset.id))}
+function addPart(id,x,y){const p=parts.find(a=>a.id===id);if(!p)return;let n=placed.filter(a=>a.id===id).length+1;let item={uid:Date.now()+Math.random(),id,name:p.name,emoji:p.emoji,x:x??(80+(placed.length%4)*145),y:y??(70+Math.floor(placed.length/4)*95)};placed.push(item);renderBoard();selectItem(item.uid);toast(p.name+' به میز اضافه شد')}
+function renderBoard(){const board=$('board');board.querySelectorAll('.board-item').forEach(e=>e.remove());placed.forEach(it=>{let el=document.createElement('div');el.className='board-item'+(selected===it.uid?' selected':'');el.style.left=it.x+'px';el.style.top=it.y+'px';el.dataset.uid=it.uid;el.innerHTML=`<span class="big">${parts.find(p=>p.id===it.id).emoji}</span>${it.name}`;el.addEventListener('click',e=>{e.stopPropagation();selectItem(it.uid)});el.addEventListener('pointerdown',startDrag);board.appendChild(el)});renderWires()}
+function selectItem(uid){selected=uid;let it=placed.find(a=>a.uid===uid);let p=parts.find(a=>a.id===it.id);$('selectedInfo').innerHTML=`<b>${p.name}</b><br>${p.desc}<br><b>پایه‌ها:</b> ${p.pins}<br><b>نکته:</b> ${p.tip}`;renderBoard();if(wireMode){if(!wireStart){wireStart=uid;$('wireStatus').textContent='قطعه اول انتخاب شد؛ حالا قطعه دوم را انتخاب کن.'}else if(wireStart!==uid){wires.push({a:wireStart,b:uid,color:$('wireColor').value});wireStart=null;renderWires();$('wireStatus').textContent='سیم اضافه شد. برای اتصال بعدی دو قطعه دیگر انتخاب کن.';toast('سیم اضافه شد')}}}
+let drag=null;
+function startDrag(e){if(e.button!==0)return;let el=e.currentTarget;drag={uid:+el.dataset.uid,startX:e.clientX,startY:e.clientY,origX:parseFloat(el.style.left),origY:parseFloat(el.style.top),moved:false};el.setPointerCapture(e.pointerId);el.addEventListener('pointermove',moveDrag);el.addEventListener('pointerup',endDrag,{once:true})}
+function moveDrag(e){if(!drag)return;let it=placed.find(a=>a.uid===drag.uid);let dx=e.clientX-drag.startX,dy=e.clientY-drag.startY;if(Math.abs(dx)+Math.abs(dy)>4)drag.moved=true;if(drag.moved){it.x=Math.max(0,Math.min(660,drag.origX+dx*760/$('board').clientWidth));it.y=Math.max(0,Math.min(380,drag.origY+dy*440/$('board').clientHeight));e.currentTarget.style.left=it.x+'px';e.currentTarget.style.top=it.y+'px';renderWires()}}
+function endDrag(e){e.currentTarget.removeEventListener('pointermove',moveDrag);drag=null}
+function renderWires(){let svg=$('wires');svg.innerHTML='';wires.forEach(w=>{let a=placed.find(p=>p.uid===w.a),b=placed.find(p=>p.uid===w.b);if(!a||!b)return;let x1=a.x+45,y1=a.y+28,x2=b.x+45,y2=b.y+28;let mid=(y1+y2)/2;let path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',`M${x1},${y1} C${x1},${mid} ${x2},${mid} ${x2},${y2}`);path.setAttribute('class','wire '+w.color);svg.appendChild(path)})}
+$('board').addEventListener('click',e=>{if(e.target.id==='board'&&wireMode){wireStart=null;$('wireStatus').textContent='برای شروع، روی قطعه اول کلیک کن.'}});
+$('wireBtn').onclick=()=>{wireMode=!wireMode;wireStart=null;$('wireBtn').textContent=wireMode?'خروج از سیم‌کشی':'حالت سیم‌کشی';$('wireStatus').textContent=wireMode?'حالا دو قطعه را به‌ترتیب انتخاب کن.':'حالت سیم‌کشی خاموش است.'};
+$('deleteWireBtn').onclick=()=>{wires.pop();renderWires();toast('آخرین سیم حذف شد')};
+$('clearBtn').onclick=()=>{placed=[];wires=[];selected=null;$('selectedInfo').textContent='هنوز قطعه‌ای انتخاب نشده است.';renderBoard();toast('میز کار پاک شد')};
+$('resetBtn').onclick=()=>loadProject('blink');
+$('saveBtn').onclick=()=>{localStorage.setItem('ap_lab',JSON.stringify({placed,wires}));toast('چیدمان در همین مرورگر ذخیره شد')};
+$('partSearch').addEventListener('input',renderParts);
+function loadProject(id){let p=projects.find(x=>x.id===id);if(!p)return;placed=[];wires=[];p.parts.forEach((pid,i)=>{let part=parts.find(a=>a.id===pid);placed.push({uid:Date.now()+i+Math.random(),id:pid,name:part.name,emoji:part.emoji,x:55+(i%3)*190,y:65+Math.floor(i/3)*115})});selected=null;renderBoard();$('codeTitle').textContent=p.name;$('codeOutput').textContent=p.code.replace(/\\n/g,'\n');$('selectedInfo').textContent='پروژه بارگذاری شد؛ برای دیدن توضیحات هر قطعه روی آن کلیک کن.';$('lab').scrollIntoView({behavior:'smooth'});toast('پروژه '+p.name+' بارگذاری شد')}
+function renderProjects(){$('projectGrid').innerHTML=projects.map(p=>`<article class="card project-card"><div class="ico">${p.emoji}</div><h3>${p.name}</h3><p>${p.desc}</p><button class="mini green" data-project="${p.id}">ساخت این پروژه ←</button></article>`).join('');document.querySelectorAll('[data-project]').forEach(b=>b.onclick=()=>loadProject(b.dataset.project))}
+function renderModules(){$('moduleGrid').innerHTML=parts.map(p=>`<article class="card module-card"><div class="ico">${p.emoji}</div><h3>${p.name}</h3><small>${p.cat}</small><p>${p.desc}</p><button class="mini" style="margin-top:10px" data-info="${p.id}">مشخصات و پایه‌ها</button></article>`).join('');document.querySelectorAll('[data-info]').forEach(b=>b.onclick=()=>showPart(b.dataset.info))}
+function showPart(id){let p=parts.find(a=>a.id===id);$('modalTitle').textContent=p.emoji+' '+p.name;$('modalBody').innerHTML=`<p>${p.desc}</p><h3>پایه‌ها</h3><p>${p.pins}</p><h3>نکته مهم</h3><p>${p.tip}</p><button class="btn primary" id="addFromModal">افزودن به میز کار</button>`;$('modal').classList.add('show');$('addFromModal').onclick=()=>{addPart(id);$('modal').classList.remove('show');$('lab').scrollIntoView({behavior:'smooth'})}}
+$('modalClose').onclick=()=>$('modal').classList.remove('show');$('modal').onclick=e=>{if(e.target===$('modal'))$('modal').classList.remove('show')};
+$('copyCode').onclick=async()=>{try{await navigator.clipboard.writeText($('codeOutput').textContent);toast('کد کپی شد')}catch(e){toast('کپی خودکار ممکن نشد؛ کد را دستی انتخاب کن')}};
+$('navBtn').onclick=()=>$('navLinks').classList.toggle('open');document.querySelectorAll('.navlinks a').forEach(a=>a.onclick=()=>$('navLinks').classList.remove('open'));
+renderCats();renderParts();renderProjects();renderModules();loadProject('blink');
+try{let saved=JSON.parse(localStorage.getItem('ap_lab'));if(saved&&Array.isArray(saved.placed)){placed=saved.placed;wires=saved.wires||[];renderBoard()}}catch(e){}
+</script>
+</body>
+</html>
